@@ -1,8 +1,10 @@
 const Discord = require("discord.js");
-const client = new Discord.Client();
+const client = new Discord.Client({
+  intents: ["GUILDS", "GUILD_MESSAGES"]
+});
 const fetch = require("node-fetch");
 
-const channelId = 1086236384542597170; // wprowadź ID kanału, którego nazwa będzie zmieniana na liczbę graczy
+const channelId = "1086236384542597170"; // wprowadź ID kanału, którego nazwa będzie zmieniana na liczbę graczy
 const serverEndpoint = "https://servers.fivem.net/servers/detail/gzrylm"; // endpoint API serwera FiveM
 
 const updateInterval = 300000; // co ile ms ma być aktualizowana liczba graczy (w tym przypadku 300000 ms = 5 minut)
@@ -21,4 +23,4 @@ async function updateChannelName() {
   channel.setName(`Gracze: ${playerCount}`);
 }
 
-client.login(1086233207386677369); // wprowadź token bota
+client.login("1086233207386677369"); // wprowadź token bota
